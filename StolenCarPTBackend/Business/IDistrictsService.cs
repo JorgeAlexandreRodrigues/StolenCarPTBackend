@@ -1,6 +1,6 @@
 ﻿using StolenCarPTBackend.Model;
 
-namespace StolenCarPTBackend.Services
+namespace StolenCarPTBackend.Business
 {
     public interface IDistrictsService
     {

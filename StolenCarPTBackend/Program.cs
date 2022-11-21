@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StolenCarPTBackend.Model.Context;
-using StolenCarPTBackend.Services;
-using StolenCarPTBackend.Services.Implementations;
+using StolenCarPTBackend.Business;
+using StolenCarPTBackend.Business.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +12,10 @@ builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connecti
 
 builder.Services.AddControllers();
 
+//Versioning API
+builder.Services.AddApiVersioning();
 
-// Dependncy Injection
+// Dependency Injection
 builder.Services.AddScoped<IDistrictsService, DistrictsServiceImplementations>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
