@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using StolenCarPTBackend.Model;
-using StolenCarPTBackend.Services;
+using StolenCarPTBackend.Business;
 
 namespace StolenCarPTBackend.Controllers
 {
+    [ApiVersion("1")]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class DistrictsController : ControllerBase
     { 
 
