@@ -2,7 +2,7 @@
 
 namespace StolenCarPTBackend.Business
 {
-    public interface IDistrictsService
+    public interface IDistrictsBusiness
     {
         Districts Create(Districts districts);
         Districts Update(Districts districts);
