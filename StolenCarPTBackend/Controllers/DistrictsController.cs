@@ -11,26 +11,26 @@ namespace StolenCarPTBackend.Controllers
     { 
 
         private readonly ILogger<DistrictsController> _logger;
-        private IDistrictsService _districtsService;
+        private IDistrictsBusiness _districtsBusiness;
 
-        public DistrictsController(ILogger<DistrictsController> logger, IDistrictsService districtsService)
+        public DistrictsController(ILogger<DistrictsController> logger, IDistrictsBusiness districtsBusiness)
         {
             _logger = logger;
-            _districtsService = districtsService;
+            _districtsBusiness = districtsBusiness;
         }
 
         [HttpGet]
         
         public IActionResult Get()
         {
-            return Ok(_districtsService.FindAll());
+            return Ok(_districtsBusiness.FindAll());
         }
 
         [HttpGet("{id}")]
 
         public IActionResult Get(long id)
         {
-            var district = (_districtsService.FindById(id));
+            var district = (_districtsBusiness.FindById(id));
             if (district == null) return NotFound();
             return Ok(district);
         }
@@ -40,7 +40,7 @@ namespace StolenCarPTBackend.Controllers
         public IActionResult Post([FromBody] Districts districts)
         {
             if (districts == null) return BadRequest();
-            return Ok(_districtsService.Create(districts));
+            return Ok(_districtsBusiness.Create(districts));
         }
 
 
@@ -49,14 +49,14 @@ namespace StolenCarPTBackend.Controllers
         public IActionResult Put([FromBody] Districts districts)
         {
             if (districts == null) return BadRequest();
-            return Ok(_districtsService.Update(districts));
+            return Ok(_districtsBusiness.Update(districts));
         }
 
         [HttpDelete("{id}")]
 
         public IActionResult Delete(long id)
         {
-            _districtsService.Delete(id);
+            _districtsBusiness.Delete(id);
             return NoContent();
         }
     }
