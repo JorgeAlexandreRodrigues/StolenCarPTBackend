@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using StolenCarPTBackend.Model;
 using StolenCarPTBackend.Business;
+using StolenCarPTBackend.Data.VO;
 
 namespace StolenCarPTBackend.Controllers
 {
@@ -37,7 +37,7 @@ namespace StolenCarPTBackend.Controllers
 
         [HttpPost]
 
-        public IActionResult Post([FromBody] Districts districts)
+        public IActionResult Post([FromBody] DistrictsVO districts)
         {
             if (districts == null) return BadRequest();
             return Ok(_districtsBusiness.Create(districts));
@@ -46,7 +46,7 @@ namespace StolenCarPTBackend.Controllers
 
         [HttpPut]
 
-        public IActionResult Put([FromBody] Districts districts)
+        public IActionResult Put([FromBody] DistrictsVO districts)
         {
             if (districts == null) return BadRequest();
             return Ok(_districtsBusiness.Update(districts));

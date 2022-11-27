@@ -1,4 +1,6 @@
-﻿using StolenCarPTBackend.Model;
+﻿using StolenCarPTBackend.Data.Converter.Implementations;
+using StolenCarPTBackend.Data.VO;
+using StolenCarPTBackend.Model;
 using StolenCarPTBackend.Repository;
 
 namespace StolenCarPTBackend.Business.Implementations
@@ -7,14 +9,19 @@ namespace StolenCarPTBackend.Business.Implementations
     {
         private readonly IRepository<Districts>  _repository;
 
+        private readonly DistrictsConverter _converter;
+
         public DistrictsBusinessImplementations(IRepository<Districts> repository) 
         {
             _repository = repository;
+            _converter = new DistrictsConverter();
         }
 
-        public Districts Create(Districts districts)
+        public DistrictsVO Create(DistrictsVO districts)
         {
-            return _repository.Create(districts);
+            var districtsEntity = _converter.Parse(districts);
+            districtsEntity = _repository.Create(districtsEntity);
+            return _converter.Parse(_repository.Create(districtsEntity));
         }
 
         public void Delete(long id)
@@ -22,19 +29,21 @@ namespace StolenCarPTBackend.Business.Implementations
             _repository.Delete(id);
         }
 
-        public List<Districts> FindAll()
+        public List<DistrictsVO> FindAll()
         {
-            return _repository.FindAll();
+            return _converter.Parse(_repository.FindAll());
         }
 
-        public Districts FindById(long id)
+        public DistrictsVO FindById(long id)
         {
-            return _repository.FindById(id);
+            return _converter.Parse(_repository.FindById(id));
         }
 
-        public Districts Update(Districts districts)
+        public DistrictsVO Update(DistrictsVO districts)
         {
-            return _repository.Update(districts);
+            var districtsEntity = _converter.Parse(districts);
+            districtsEntity = _repository.Update(districtsEntity);
+            return _converter.Parse(_repository.Update(districtsEntity));
         }
     }
 }

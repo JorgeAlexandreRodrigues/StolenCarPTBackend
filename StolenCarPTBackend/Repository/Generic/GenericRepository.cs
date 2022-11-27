@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StolenCarPTBackend.Model;
 using StolenCarPTBackend.Model.Base;
 using StolenCarPTBackend.Model.Context;
 

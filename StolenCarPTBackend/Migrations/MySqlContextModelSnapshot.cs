@@ -125,6 +125,58 @@ namespace StolenCarPTBackend.Migrations
                             Name = "Viseu"
                         });
                 });
+
+            modelBuilder.Entity("StolenCarPTBackend.Model.Locations", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
+
+                    b.Property<long>("district_id")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("district_id");
+
+                    b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Vila Nova de Famalicao",
+                            district_id = 3L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "Barcelos",
+                            district_id = 3L
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Trofa",
+                            district_id = 13L
+                        });
+                });
+
+            modelBuilder.Entity("StolenCarPTBackend.Model.Locations", b =>
+                {
+                    b.HasOne("StolenCarPTBackend.Model.Districts", "Districts")
+                        .WithMany()
+                        .HasForeignKey("district_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Districts");
+                });
 #pragma warning restore 612, 618
         }
     }

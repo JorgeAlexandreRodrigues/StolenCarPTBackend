@@ -6,11 +6,13 @@ namespace StolenCarPTBackend.Model.Context
     {
         public MySqlContext() { }
         public MySqlContext(DbContextOptions<MySqlContext> options) : base(options) { }
-        public DbSet<Districts> Districts { get; set; }
+        public DbSet<Locations> Districts { get; set; }
+        public DbSet<Locations> Locations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seeddistricts();
+            modelBuilder.Seedlocations();
         }
     }
 }
