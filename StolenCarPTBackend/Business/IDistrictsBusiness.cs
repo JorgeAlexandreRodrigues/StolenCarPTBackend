@@ -1,13 +1,13 @@
-﻿using StolenCarPTBackend.Model;
+﻿using StolenCarPTBackend.Data.VO;
 
 namespace StolenCarPTBackend.Business
 {
     public interface IDistrictsBusiness
     {
-        Districts Create(Districts districts);
-        Districts Update(Districts districts);
-        Districts FindById(long id);
-        List<Districts> FindAll();
+        DistrictsVO Create(DistrictsVO districts);
+        DistrictsVO Update(DistrictsVO districts);
+        DistrictsVO FindById(long id);
+        List<DistrictsVO> FindAll();
         void Delete(long id);
 
     }

@@ -19,6 +19,7 @@ builder.Services.AddApiVersioning();
 
 // Dependency Injection
 builder.Services.AddScoped<IDistrictsBusiness, DistrictsBusinessImplementations>();
+builder.Services.AddScoped<ILocationsBusiness, LocationsBusinessImplementations>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

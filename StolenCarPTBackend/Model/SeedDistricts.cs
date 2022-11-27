@@ -55,7 +55,7 @@ namespace StolenCarPTBackend.Model
                 new Districts
                 {
                      Id = 10,
-                     Name = "Leirua"
+                     Name = "Leiria"
                 },
                 new Districts
                 {
