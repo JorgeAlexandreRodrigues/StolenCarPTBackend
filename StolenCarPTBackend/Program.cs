@@ -20,6 +20,8 @@ builder.Services.AddApiVersioning();
 // Dependency Injection
 builder.Services.AddScoped<IDistrictsBusiness, DistrictsBusinessImplementations>();
 builder.Services.AddScoped<ILocationsBusiness, LocationsBusinessImplementations>();
+builder.Services.AddScoped<IBrandsBusiness, BrandsBusinessImplementations>();
+builder.Services.AddScoped<IModelsBusiness, ModelsBusinessImplementation>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -35,10 +37,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
+
+
 
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();

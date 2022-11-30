@@ -1,5 +1,4 @@
-﻿using StolenCarPTBackend.Model;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StolenCarPTBackend.Data.VO
