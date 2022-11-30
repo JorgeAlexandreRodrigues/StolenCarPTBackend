@@ -20,14 +20,20 @@ namespace StolenCarPTBackend.Controllers
         }
 
         [HttpGet]
-        
+        [ProducesResponseType((200), Type = typeof(List<DistrictsVO>))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Get()
         {
             return Ok(_districtsBusiness.FindAll());
         }
 
         [HttpGet("{id}")]
-
+        [ProducesResponseType((200), Type = typeof(DistrictsVO))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Get(long id)
         {
             var district = (_districtsBusiness.FindById(id));
@@ -36,7 +42,10 @@ namespace StolenCarPTBackend.Controllers
         }
 
         [HttpPost]
-
+        [ProducesResponseType((200), Type = typeof(DistrictsVO))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Post([FromBody] DistrictsVO districts)
         {
             if (districts == null) return BadRequest();
@@ -45,7 +54,9 @@ namespace StolenCarPTBackend.Controllers
 
 
         [HttpPut]
-
+        [ProducesResponseType((200), Type = typeof(DistrictsVO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Put([FromBody] DistrictsVO districts)
         {
             if (districts == null) return BadRequest();
@@ -53,7 +64,9 @@ namespace StolenCarPTBackend.Controllers
         }
 
         [HttpDelete("{id}")]
-
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Delete(long id)
         {
             _districtsBusiness.Delete(id);

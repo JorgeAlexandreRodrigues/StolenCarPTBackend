@@ -23,6 +23,10 @@ namespace StolenCarPTBackend.Controllers
 
         // GET: api/<LocationsController>
         [HttpGet]
+        [ProducesResponseType((200), Type = typeof(List<LocationsVO>))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Get()
         {
             return Ok(_locationsBusiness.FindAll());
@@ -30,6 +34,10 @@ namespace StolenCarPTBackend.Controllers
 
         // GET api/<LocationsController>
         [HttpGet("{id}")]
+        [ProducesResponseType((200), Type = typeof(LocationsVO))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Get(long id)
         {
             var location = (_locationsBusiness.FindById(id));
@@ -39,6 +47,10 @@ namespace StolenCarPTBackend.Controllers
 
         // POST api/<LocationsController>
         [HttpPost]
+        [ProducesResponseType((200), Type = typeof(LocationsVO))]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Post([FromBody] LocationsVO locations)
         {
             if (locations == null) return BadRequest();
@@ -47,6 +59,9 @@ namespace StolenCarPTBackend.Controllers
 
         // PUT api/<LocationsController>
         [HttpPut("{id}")]
+        [ProducesResponseType((200), Type = typeof(LocationsVO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Put([FromBody] LocationsVO locations)
         {
             if (locations == null) return BadRequest();
@@ -55,6 +70,9 @@ namespace StolenCarPTBackend.Controllers
 
         // DELETE api/<LocationsController>
         [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Delete(long id)
         {
             _locationsBusiness.Delete(id);
